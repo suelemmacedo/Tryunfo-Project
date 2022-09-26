@@ -27,13 +27,13 @@ class Form extends React.Component {
           <label htmlFor="urlImg">
             <input type="text" data-testid="image-input" />
           </label>
-          <label>
-            <select data-testid="rare-input">
-              <option value="normal">Normal</option>
-              <option value="raro">Raro</option>
-              <option value="muito raro">Muito raro</option>
-            </select>
-          </label>
+
+          <select data-testid="rare-input">
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito raro</option>
+          </select>
+
           <label htmlFor="trunfo">
             <input type="checkbox" data-testid="trunfo-input" />
           </label>
