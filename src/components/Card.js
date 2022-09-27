@@ -57,7 +57,7 @@ class Card extends React.Component {
         {' '}
         /
         {'>'}
-        {cardTrunfo === true ? <p data-testid="trunfo-card"> Super Trunfo</p> : false}
+        {cardTrunfo === true ? <p data-testid="trunfo-card"> Super Trunfo</p> : null}
         {' '}
         /
         {'>'}
