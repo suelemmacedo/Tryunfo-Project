@@ -1,4 +1,5 @@
 import React from 'react';
+import { eventWrapper } from '@testing-library/user-event/dist/utils';
 import Form from './components/Form';
 import Card from './components/Card';
 
@@ -16,6 +17,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      savedCards: [],
     };
   }
 
@@ -33,10 +35,10 @@ class App extends React.Component {
     const attr3Validation = Number(cardAttr3) <= attrsMax && Number(cardAttr3) >= 0;
     const validationAttrs = Number(cardAttr1) + Number(cardAttr2)
     + Number(cardAttr3) <= attrsSome;
-    const isDisabled = validationNome && validationDescription && validationImagem
+    const isEnable = validationNome && validationDescription && validationImagem
     && validationRare && attr1Validation
     && attr2Validation && attr3Validation && validationAttrs;
-    if (isDisabled) {
+    if (isEnable) {
       this.setState({ isSaveButtonDisabled: false });
     } else { this.setState({ isSaveButtonDisabled: true }); }
   };
@@ -46,6 +48,31 @@ class App extends React.Component {
     this.setState({
       [name]: type === 'checkbox' ? checked : value,
     }, this.validationSaveButton);
+  };
+
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const { cardName, cardDescription, cardAttr1, cardAttr2,
+      cardAttr3, cardRare, cardImage, cardTrunfo } = this.state;
+    const newCard = { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardRare,
+      cardImage,
+      cardTrunfo };
+    this.setState((prevState) => ({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'Normal',
+      cardTrunfo: false,
+      savedCards: [...prevState.savedCards, newCard],
+    }));
   };
 
   render() {
@@ -75,6 +102,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
