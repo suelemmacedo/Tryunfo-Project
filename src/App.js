@@ -22,12 +22,11 @@ class App extends React.Component {
   }
 
   validationSaveButton = () => {
-    const { cardName, cardDescription, cardImage, cardRare,
+    const { cardName, cardDescription, cardImage,
       cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const validationNome = cardName.length !== 0;
     const validationDescription = cardDescription.length !== 0;
     const validationImagem = cardImage.length !== 0;
-    /* const validationRare = cardRare.length !== 0; */
     const attrsMax = 90;
     const attrsSome = 210;
     const attr1Validation = Number(cardAttr1) <= attrsMax && Number(cardAttr1) >= 0;
@@ -89,6 +88,7 @@ class App extends React.Component {
       cardTrunfo,
       isSaveButtonDisabled,
       hasTrunfo,
+      savedCards,
 
     } = this.state;
     return (
@@ -118,8 +118,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
-
         />
+        {savedCards.map((card, index) => (<Card
+          key={ index }
+          cardName={ card.cardName }
+          cardDescription={ card.cardDescription }
+          cardAttr1={ card.cardAttr1 }
+          cardAttr2={ card.cardAttr2 }
+          cardAttr3={ card.cardAttr3 }
+          cardImage={ card.cardImage }
+          cardRare={ card.cardRare }
+          cardTrunfo={ card.cardTrunfo }
+          onInputChange={ this.onInputChange }
+        />))}
       </div>
     );
   }
