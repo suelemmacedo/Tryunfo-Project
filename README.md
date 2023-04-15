@@ -27,4 +27,12 @@
 <img align="center" alt="Suelem-React" height="40" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
 <p></p> 
 
+<img src="https://img.shields.io/static/v1?label=Link&message=Tryunfo&color=purple&style=for-the-badge&logo=github"/>
+
+### <b> <a href="https://tryunfo-project-eosin.vercel.app/">Tryunfo</a> </b> <br>
+
+</div>
+
+<div align="center">
+
 
